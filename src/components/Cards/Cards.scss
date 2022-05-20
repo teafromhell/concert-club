@@ -1,0 +1,60 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  
+  gap: 20px;
+}
+
+.cards__single-card {
+    height: 143px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 15px;
+
+  border: 1px solid #dadada;
+
+  h4 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 23px;
+    text-transform: capitalize;
+    
+    color: #000000;
+  }
+
+  p {
+      margin-top: 5px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    
+    
+    color: rgba(0, 0, 0, 0.41);
+  }
+
+  button {
+      
+      cursor: pointer;
+    background: #101010;
+    border: 1px solid #0d1e4b;
+    padding: 10px 20px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+    
+
+    text-transform: capitalize;
+
+    color: #ffffff;
+  }
+}

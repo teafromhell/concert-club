@@ -1,0 +1,169 @@
+.main {
+  margin-top: 30px;
+  padding: 0 60px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    //padding: 0 60px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    h3 {
+      font-family: "Alegreya Sans SC";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 35px;
+      line-height: 40px;
+
+      color: #000000;
+    }
+  }
+  &__about-stage {
+    margin-top: 47px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+  }
+  &__about-stage-text {
+    padding-left: 42px;
+
+    border-left: 2px solid #dadada;
+    position: relative;
+
+    height: 100%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h5 {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 20px;
+
+      color: #000000;
+    }
+    p {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 24px;
+
+      color: #939393;
+    }
+  }
+
+  &__about-stage-left {
+    grid-column: 1;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      font-family: "Alegreya Sans SC";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 35px;
+      line-height: 40px;
+
+      color: #000000;
+
+      margin-bottom: 16px;
+
+      border: 1px solid white;
+    }
+  }
+  &__send-request {
+    grid-column: 2;
+    form {
+      border: 1px solid #dadada;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      padding-top: 13px;
+      label {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 40px;
+
+        color: #000000;
+      }
+      button {
+        margin-top: 15px;
+        cursor: pointer;
+        background: #101010;
+        border: 1px solid #0d1e4b;
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 15px;
+        padding: 10px 20px;
+
+        text-transform: capitalize;
+
+        color: #ffffff;
+
+        align-self: flex-end;
+      }
+
+      textarea {
+        padding: 10px 15px;
+        resize: none;
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 15px;
+
+        color: #969696;
+
+        outline: 1px solid #496692;
+        border: none;
+      }
+    }
+  }
+}
+
+.main__aboutband {
+  margin-top: 48px;
+  margin-bottom: 38px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  h3 {
+    flex: 1;
+    font-family: "Alegreya Sans SC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 40px;
+    color: #000000;
+  }
+
+  p {
+    flex: 6;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #939393;
+  }
+}
+
+.main__blue-line {
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
