@@ -1,59 +1,72 @@
 import './Posts.scss'
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { IPosts } from '../../types/data'
+import { Link, useParams } from 'react-router-dom'
+import { useAppSelector } from '../../utils/Hook'
 
-interface IUserId {
+
+interface IUserIdProps {
     id: number;
 }
 
 
-const Posts: React.FC<IUserId> = ({ id }): JSX.Element => {
+const Posts: React.FC<IUserIdProps> = ({ id }): JSX.Element => {
 
-    const [posts, setPosts] = useState<IPosts[]>([])
+    const posts = useAppSelector(state => state.posts.posts)
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    const [isShow, setShow] = useState<boolean>(false)
+
+    const { name } = useParams()
 
 
-    const fetchData = async (): Promise<void> => {
-        try {
-            const response =
-                await axios.get('https://jsonplaceholder.typicode.com/posts')
-            const data = await response.data
-            setPosts([...data])
-        } catch (e) { console.log(e) }
 
-    }
+
     return (
         <div className='posts'>
-            <h2 className='posts__header'>Посты</h2>
+            <div className='posts__header'>
+                <h2 >Посты</h2>
+                <button onClick={(): void => setShow(true)}>Посмотреть все посты</button>
+            </div>
             <div className='posts__container'>
-            {posts.filter((post) => post.userId === id)
-                .map((post, index): JSX.Element | null => {
-                    if (index > 6) {
+                {isShow ? (posts.filter((post: IPosts): boolean => post.userId === id)
+                    .map((post: IPosts, index: number): JSX.Element => {
+
                         return (
-                            <div className='posts__single-post'>
+                            <Link key={index} to={`/${name}/${post.title}`} className='posts__single-post'>
                                 <div className='posts__single-post-header'>
                                     <h4>{post.title}</h4>
-                                    <p>12.01.2022</p>   
                                 </div>
                                 <p className='posts__text'>{post.body}</p>
-                                
-                            </div>
-                        )
-                    } else {
-                        return null
-                    }
 
-                })
-            }
+                            </Link>
+                        )
+
+                    })) : (
+                    posts.filter((post: IPosts): boolean => post.userId === id)
+                        .map((post: IPosts, index: number): JSX.Element | null => {
+                            if (index < 3) {
+                                return (
+
+                                    <Link key={index} to={`/${name}/${post.title}`} className='posts__single-post'>
+                                        <div className='posts__single-post-header'>
+                                            <h4>{post.title}</h4>
+
+                                        </div>
+                                        <p className='posts__text'>{post.body}</p>
+
+                                    </Link>
+
+                                )
+                            } else {
+                                return null;
+                            }
+
+
+                        })
+                )
+                }
             </div>
-            <div className="app">
-                <p>Test Test Test Test Test Test tttttttttt</p>
-                </div>
         </div>
     )
 }

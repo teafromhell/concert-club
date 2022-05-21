@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import ConcertMainPage from './Pages/ConcertMainPage/ConcertMainPage';
 import UserPage from './Pages/UserPage/UserPage';
-import axios from 'axios'
-import { IUsers } from './types/data';
+import SinglePostPage from './Pages/SinglePostPage/SinglePostPage';
 
-function App() {
+import { useEffect } from 'react'
 
-  const [users, setUsers] = useState<IUsers[]>([])
-
-    useEffect(() => {
-        fetchData()
-    }, [])
+import { useAppDispatch } from './utils/Hook';
+import { fetchUsers } from './store/slices/userSlice'
+import { fetchPosts } from './store/slices/postSlice'
 
 
-    const fetchData = async (): Promise<void> => {
-        try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-            const data = await response.data
-            setUsers([...data])
-        } catch (e) { console.log(e) }
+function App(): JSX.Element {
 
-    }
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+    dispatch(fetchPosts())
+  }, [dispatch])
   return (
     <div className="app">
       <Routes>
-       <Route path='/' element= { <ConcertMainPage users={users}/>}  />
-        <Route path='/:name'  element={<UserPage users={users}/>} />
+        <Route path='/' element={<ConcertMainPage />} />
+        <Route path=':name'  >
+          <Route index element={<UserPage />} />
+          <Route path=':title' element={<SinglePostPage />} />
+        </Route>
+
       </Routes>
     </div>
   );

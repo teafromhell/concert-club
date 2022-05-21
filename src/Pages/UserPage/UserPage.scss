@@ -17,7 +17,6 @@
     color: #000000;
   }
 
-
   &__third-row {
     text-align: end;
     button {
@@ -29,7 +28,6 @@
       font-weight: 600;
       font-size: 11px;
       line-height: 15px;
-      /* identical to box height */
 
       color: #ffffff;
       width: 250px;
@@ -53,4 +51,32 @@ tr {
   line-height: 40px;
 
   color: #000000;
+}
+
+.user__publications {
+  padding: 23px 60px 43px 60px;
+
+  border: 1px solid #000000;
+  border-top: none;
+}
+
+.user__publications-header {
+  font-family: "Alegreya Sans SC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 40px;
+
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.user__publications-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  div {
+    border: 1px solid #000000;
+    padding-top: 100%;
+  }
 }

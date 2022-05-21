@@ -1,14 +1,11 @@
 import './ConcertInfo.scss'
 import number from '../../assets/1000.png';
 import line from '../../assets/Line 11.png'
-
-import React from 'react'
-
 import Cards from '../Cards/Cards';
-import { IUsers } from '../../types/data';
 
-const ConcertInfo = ({users}:{users:IUsers[]}): JSX.Element => {
-    
+const ConcertInfo = (): JSX.Element => {
+
+
     return (
         <div className='main'>
             <div className='main__header'>
@@ -18,7 +15,7 @@ const ConcertInfo = ({users}:{users:IUsers[]}): JSX.Element => {
 
 
             <div className='main__cards'>
-                <Cards users={users} />
+                <Cards />
 
             </div>
 

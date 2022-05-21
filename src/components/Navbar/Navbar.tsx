@@ -1,11 +1,12 @@
 import './Navbar.scss'
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar:React.FC = ():JSX.Element => {
   return (
     <nav className='navbar'>
-        <h2 className='navbar__name'>CONCERT CLUB</h2>
+         <Link to={'/'} className='navbar__name'>CONCERT CLUB</Link>
         <div className='navbar__btns'>
             <button>Версия для слабовидящих</button>
             <button>Мой профиль</button>

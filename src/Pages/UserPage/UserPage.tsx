@@ -4,18 +4,35 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { IUsers } from '../../types/data';
 import Posts from '../../components/Posts/Posts';
+import { useAppSelector } from '../../utils/Hook';
 
-const UserPage = ({ users }: { users: IUsers[] }): JSX.Element => {
+const colors: string[] = ['#63B4EE', '#2B9FF2', '#547FED', '#4366E1', '#2040B0', '#0C257C']
+
+const UserPage: React.FC = (): JSX.Element => {
     const { name } = useParams()
+    const users = useAppSelector(state => state.users.users)
+
+
+    const createPublications = (): JSX.Element[] => {
+        const publications: JSX.Element[] = [];
+        for (let i = 0; i < 6; i++) {
+
+            publications.push(
+                <div key={i} style={{ background: `${colors[i]}` }}></div>
+            );
+        }
+        return publications;
+    }
+
     return (
         <>
             <Navbar />
             <div>s</div>
 
-            {users.filter(user => user.name === name)
-                .map((user, index) => {
+            {users.filter((user: IUsers): boolean => user.name === name)
+                .map((user: IUsers, index: number): JSX.Element => {
                     return (
-                        <>
+                        <div key={index}>
                             <table className="user">
                                 <tbody>
                                     <tr >
@@ -45,15 +62,20 @@ const UserPage = ({ users }: { users: IUsers[] }): JSX.Element => {
                                     </tr>
                                 </tbody>
                             </table>
-                            
-                                <Posts id={user.id}/>
-                            
-                        </>
+
+                            <Posts id={user.id} />
+
+                        </div>
                     )
                 })
             }
 
-
+            <div className='user__publications'>
+                <h2 className='user__publications-header'>Публикации</h2>
+                <div className='user__publications-container'>
+                    {createPublications()}
+                </div>
+            </div>
 
         </>
     )
