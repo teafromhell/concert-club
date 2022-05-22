@@ -13,11 +13,12 @@ export interface IPosts {
     userId: number;
     title: string;
     body: string;
+    id: number;
 }
 
 export interface IComments {
     postId: number;
-    id: number;
+    id: string;
     name: string;
     email: string;
     body: string;

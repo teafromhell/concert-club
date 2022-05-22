@@ -1,3 +1,8 @@
+@font-face {
+  src: url("../../assets/fonts/ProximaNova-Semibold.ttf");
+  font-family: "Proxima";
+}
+
 .navbar {
   background: #101010;
   display: flex;
@@ -26,6 +31,7 @@
 
   &__btns {
     button {
+      font-family: "Proxima";
       padding: 10px 20px;
       background: #ffffff;
       font-weight: 600;

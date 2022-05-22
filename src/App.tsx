@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { useAppDispatch } from './utils/Hook';
 import { fetchUsers } from './store/slices/userSlice'
 import { fetchPosts } from './store/slices/postSlice'
+import ScrollToTop from './utils/ScrollToTop';
 
 
 function App(): JSX.Element {
@@ -21,14 +22,15 @@ function App(): JSX.Element {
   }, [dispatch])
   return (
     <div className="app">
-      <Routes>
-        <Route path='/' element={<ConcertMainPage />} />
-        <Route path=':name'  >
-          <Route index element={<UserPage />} />
-          <Route path=':title' element={<SinglePostPage />} />
-        </Route>
-
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route path='/' element={<ConcertMainPage />} />
+          <Route path=':name'  >
+            <Route index element={<UserPage />} />
+            <Route path=':title' element={<SinglePostPage />} />
+          </Route>
+        </Routes>
+      </ScrollToTop>
     </div>
   );
 }

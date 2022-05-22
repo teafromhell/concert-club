@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 
   &__post {
     width: 500px;
@@ -70,7 +71,4 @@
 }
 
 
-.post-page__submit {
-  display: flex;
-  flex-direction: column;
-}
+
